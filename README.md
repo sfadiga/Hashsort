@@ -2,8 +2,8 @@
 An idea of a simple and naive sorting algorithm that uses a hash (dictionary) as auxiliary structure.
 
 The implementation uses python dictionary, which time complexity table follows:
-Operation Average Case Amortized Worst Case
 ```
+Operation Average Case Amortized Worst Case
 Copy[2]       O(n)             O(n)
 Get Item      O(1)             O(n)
 Set Item[1]   O(1)             O(n)
