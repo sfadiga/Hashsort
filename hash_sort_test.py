@@ -5,13 +5,16 @@ import random
 
 def bubble_sort(arr):
     '''
-    a simple bubble sort algorithm
+    an enhanced bubble sort algorithm from wikipedia
     '''
-    for i in range(0, len(arr)-1):
-        for j in range(0, len(arr)-1-i):
-            if arr[ j ] > arr[j + 1]:
-                arr[j], arr[j + 1] = arr[j + 1], arr[j]
-
+    n = len(arr)
+    while n > 0:
+        newn = 0
+        for i in range(1, n):
+            if arr[i - 1] > arr[i]:
+                arr[i], arr[i - 1] = arr[i - 1], arr[i]
+                newn = i
+        n = newn
 
 def test_bubble_sort(data):
     start = time.time()
@@ -38,8 +41,8 @@ def random_tester(size):
     '''
     print("sorting {} random numbers".format(size))
     data = [random.randrange(size) for x in range(0, size)]
-    hdata = data.copy()
-    bdata = data.copy()
+    hdata = list(data)
+    bdata = list(data)
     
     test_bubble_sort(bdata)
     test_hash_sort(hdata)
@@ -59,8 +62,8 @@ def almost_sorted_test(size):
     print("sorting {} almost sorted numbers".format(size))
     data = [x for x in range(0, size - 1)]
     data.insert(0,size) # almost sorted
-    hdata = data.copy()
-    bdata = data.copy()
+    hdata = list(data)
+    bdata = list(data)
     
     test_bubble_sort(bdata)
     test_hash_sort(hdata)
@@ -79,8 +82,8 @@ def sorted_test(size):
     '''
     print("sorting {} sorted numbers".format(size))
     data = [x for x in range(0, size)]
-    hdata = data.copy()
-    bdata = data.copy()
+    hdata = list(data)
+    bdata = list(data)
     
     test_bubble_sort(bdata)
     test_hash_sort(hdata)
@@ -99,8 +102,8 @@ def reversed_test(size):
     '''
     print("sorting {} reversed numbers".format(size))
     data = [x for x in reversed(range(0, size))]
-    hdata = data.copy()
-    bdata = data.copy()
+    hdata = list(data)
+    bdata = list(data)
     
     test_bubble_sort(bdata)
     test_hash_sort(hdata)
@@ -115,12 +118,12 @@ def reversed_test(size):
 
 def sparced_random_test(size):
     '''
-    tests a sparced list of random numbers based on size 
+    tests a sparse list of random numbers based on size 
     '''
-    print("sorting {} sparced random numbers".format(size))
+    print("sorting {} sparse random numbers".format(size))
     data = [random.randrange(size * 10) for x in range(0, size)]
-    hdata = data.copy()
-    bdata = data.copy()
+    hdata = list(data)
+    bdata = list(data)
     
     test_bubble_sort(bdata)
     test_hash_sort(hdata)
@@ -142,4 +145,3 @@ sorted_test(test_size)
 almost_sorted_test(test_size)
 reversed_test(test_size)
 sparced_random_test(test_size)
-
